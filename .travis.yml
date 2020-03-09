@@ -4,5 +4,5 @@ services:
 
 script:
     - docker build -t xabimoreno/koachooweb -f Dockerfile.dev .
-    - docker run -d -p 4200:4200 --name app --rm xabimoreno/koachooweb
-    - docker exec -it app ng test --watch=false 
+    # docker run -d -p 4200:4200 --name app --rm xabimoreno/koachooweb
+    # docker exec -it app ng test --watch=false 
