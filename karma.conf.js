@@ -2,8 +2,6 @@
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
 module.exports = function (config) {
-  const puppeteer = require('puppeteer');
-  process.env.CHROME_BIN = puppeteer.executablePath();
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
@@ -15,10 +13,10 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
+      clearContext: false
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/myApp'),
+      dir: require('path').join(__dirname, '../coverage/example'),
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
@@ -27,16 +25,17 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadlessCI'],
+    // updated
+    browsers: ['ChromeHeadless'],
     // new
     customLaunchers: {
-      'ChromeHeadlessCI': {
-        base: 'ChromeHeadless',
+      'ChromeHeadless': {
+        base: 'Chrome',
         flags: [
-        '--disable-web-security',
-        '--disable-gpu',
-        '--no-sandbox',
-        '--remote-debugging-port=9222'
+          '--no-sandbox',
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222'
         ]
       }
     },
