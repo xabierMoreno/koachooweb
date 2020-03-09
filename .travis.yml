@@ -1,8 +1,9 @@
 sudo: required
 services:
     - docker
-
-script:
+    
+before_install:
     - docker build -t xabimoreno/koachooweb -f Dockerfile.dev .
+script:
     - docker run -d -p 4200:4200 --name app --rm xabimoreno/koachooweb
     - docker exec -it app ng test --watch=false 
