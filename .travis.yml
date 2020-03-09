@@ -1,7 +1,6 @@
 sudo: required
 services:
-    - docker    
-
+    - docker  
 script:
     - docker build -t xabimoreno/koachooweb -f Dockerfile.dev .
 deploy:
