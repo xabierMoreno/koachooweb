@@ -4,3 +4,6 @@ services:
 
 before_install:
     - docker build -t xabimoreno/koachooweb -f Dockerfile.dev .
+
+script:
+    - docker run xabimoreno/koachooweb npm run test
