@@ -2,7 +2,7 @@ sudo: required
 services:
     - docker
     
-script:
+before_install:
     - docker build -t xabimoreno/koachooweb -f Dockerfile.dev .
-    # docker run -d -p 4200:4200 --name app --rm xabimoreno/koachooweb
-    # docker exec -it app ng test --watch=false 
+script:
+    - docker run -u $(id -u) --rm -v "$PWD":/app trion/ng-cli-karma ng test
